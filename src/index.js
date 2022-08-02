@@ -131,7 +131,7 @@ let langsSettings = {};
                 pageBackGround: "linear-gradient(#2CA8FF, #155b8d)",
                 loggedIn: "Successfully signed in.",
                 mainColor: "#CEDBDF",
-                subColor: "#E2F2F2",
+                subColor: "#1A5273",
                 preloader: "Loading..."
             },
             index: {
