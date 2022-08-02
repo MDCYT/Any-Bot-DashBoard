@@ -25,8 +25,8 @@ let langsSettings = {};
             id: process.env.DISCORD_BOT_ID,
             secret: process.env.DISCORD_BOT_ID_SECRET
         },
-        redirectUri: process.env.DASHBOARD_URL+'/discord/callback',
-        domain: process.env.DASHBOARD_URL,
+        redirectUri: process.env.DASHBOARD_DOMAIN+'/discord/callback',
+        domain: process.env.DASHBOARD_DOMAIN,
         bot: client,
         theme: DarkDashboard({
             privacyPolicy: {
