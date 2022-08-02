@@ -11,7 +11,6 @@ const client = new Client({
 client.login(process.env.DISCORD_BOT_TOKEN);
 
 const DarkDashboard = require('dbd-dark-dashboard');
-let langsSettings = {};
 
 (async () => {
     let DBD = require('discord-dashboard');
@@ -206,24 +205,19 @@ let langsSettings = {};
             categoryName: "Setup",
             categoryDescription: "Setup your bot with default settings!",
             categoryOptionsList: [{
-                optionId: 'lang',
-                optionName: "Language",
-                optionDescription: "Change bot's language easily",
-                optionType: DBD.formTypes.select({
-                    "Polish": 'pl',
-                    "English": 'en',
-                    "French": 'fr'
-                }),
+                optionId: 'prefix',
+                optionName: "Prefix",
+                optionDescription: "Change bot's prefix.",
+                optionType: DBD.formTypes.input(">", 1, 3, false, true),
                 getActualSet: async ({
                     guild
                 }) => {
-                    return langsSettings[guild.id] || null;
+                    return ">"
                 },
                 setNew: async ({
                     guild,
                     newData
                 }) => {
-                    langsSettings[guild.id] = newData;
                     return;
                 }
             }, ]
