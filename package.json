@@ -1,0 +1,26 @@
+{
+  "name": "any-bot-dashboard",
+  "version": "1.0.0-dev",
+  "description": "Any Bot Dashboard",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "Any-Bot",
+    "DashBoard",
+    "Discord.js-v13"
+  ],
+  "author": "MDC",
+  "license": "ISC",
+  "dependencies": {
+    "dbd-dark-dashboard": "^1.6.591",
+    "discord-dashboard": "^2.3.40",
+    "discord.js": "^13.9.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.19"
+  }
+}
