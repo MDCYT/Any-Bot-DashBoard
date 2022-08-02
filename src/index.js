@@ -24,10 +24,92 @@ const DarkDashboard = require('dbd-dark-dashboard');
             id: process.env.DISCORD_BOT_ID,
             secret: process.env.DISCORD_BOT_ID_SECRET
         },
-        redirectUri: process.env.DASHBOARD_DOMAIN+'/discord/callback',
+        redirectUri: process.env.DASHBOARD_DOMAIN + '/discord/callback',
         domain: process.env.DASHBOARD_DOMAIN,
         bot: client,
+        invite: {
+            clientId: process.env.DISCORD_BOT_ID,
+            scopes: ["bot", "applications.commands"],
+            permissions: '8'
+        },
         theme: DarkDashboard({
+            information: {
+                createdBy: "MDCDEV",
+                websiteTitle: "Any Bot",
+                websiteName: "Any Bot",
+                websiteUrl: process.env.WEBSITE_URL,
+                dashboardUrl: process.env.DASHBOARD_URL,
+                supporteMail: process.env.SUPPORT_EMAIL,
+                supportServer: process.env.SUPPORT_SERVER_LINK,
+                imageFavicon: "https://www.imidnight.ml/assets/img/logo-circular.png",
+                iconURL: "https://www.imidnight.ml/assets/img/logo-circular.png",
+                pageBackGround: "linear-gradient(#2CA8FF, #155b8d)",
+                loggedIn: "Successfully signed in.",
+                mainColor: "#CEDBDF",
+                subColor: "#1A5273",
+                preloader: "Loading..."
+            },
+            index: {
+                card: {
+                    category: "Welcome",
+                    title: `Welcome to the Any Bot Dashboard`,
+                    image: "https://i.imgur.com/SU2Wfz2.png"
+                },
+                information: {
+                    category: "Category",
+                    title: "Information",
+                    description: `This bot is a multi-purpose bot, music, moderation, fun, and more.`,
+                },
+                feeds: {
+                    category: "Category",
+                    title: "Feeds",
+                    description: `New updates will be posted here.`,
+                },
+            },
+            commands: [{
+                category: "Starting Up",
+                subTitle: "Some essencials commands",
+                aliasesDisabled: true,
+                list: [{
+                        commandName: "help",
+                        commandUsage: ">help &#60;command&#62;",
+                        commandDescription: "Obtain a list of commands or information about a specific command.",
+                        commandAlias: ["commands", "h"]
+                    },
+                    {
+                        commandName: "serverinfo",
+                        commandUsage: ">serverinfo &#60;user/role/channel mention&#62;",
+                        commandDescription: "Fetches information and statistics about the server.",
+                        commandAlias: ['server', 'si']
+                    },
+                    {
+                        commandName: "warn",
+                        commandUsage: ">warn [user id/mention] &#60;reason&#62;",
+                        commandDescription: "Warns a member in your server.",
+                    },
+                    {
+                        commandName: "ban",
+                        commandUsage: ">ban [user id/mention] &#60;reason&#62;",
+                        commandDescription: "Bans a member from your server.",
+                    },
+                    {
+                        commandName: "kick",
+                        commandUsage: ">kick [user id/mention] &#60;reason&#62;",
+                        commandDescription: "Kicks a member from your server.",
+                    },
+                    {
+                        commandName: "mute",
+                        commandUsage: ">mute [user id/mention] &#60;time&#62; &#60;reason&#62;",
+                        commandDescription: "Mutes a user for the specified amount of time (max 1 month).",
+                    },
+                    {
+                        commandName: "purge",
+                        commandUsage: ">purge &#60;channel id/mention&#62; &#60;user id/mention&#62; [message count] &#60;reason&#62;",
+                        commandDescription: "Deletes the specified amount of messages from the provided channel.  If no channel is given, the messages will be deleted from the current channel. If a member is provided, only their messages will be deleted from the batch.No more than 100 messages may be deleted at a time. Messages older than 2 weeks old cannot be deleted.",
+                        commandAlias: ['clear']
+                    }
+                ],
+            }],
             privacyPolicy: {
                 pp: `<div class="container white-text">
                 <h1 id="terms-of-service-and-privacy-policy">Terms Of Service and Privacy Policy</h1>
@@ -117,110 +199,53 @@ const DarkDashboard = require('dbd-dark-dashboard');
         
               </div>`
             },
-            information: {
-                createdBy: "MDCDEV",
-                websiteTitle: "Any Bot",
-                websiteName: "Any Bot",
-                websiteUrl: process.env.WEBSITE_URL,
-                dashboardUrl: process.env.DASHBOARD_URL,
-                supporteMail: process.env.SUPPORT_EMAIL,
-                supportServer: process.env.SUPPORT_SERVER_LINK,
-                imageFavicon: "https://www.imidnight.ml/assets/img/logo-circular.png",
-                iconURL: "https://www.imidnight.ml/assets/img/logo-circular.png",
-                pageBackGround: "linear-gradient(#2CA8FF, #155b8d)",
-                loggedIn: "Successfully signed in.",
-                mainColor: "#CEDBDF",
-                subColor: "#1A5273",
-                preloader: "Loading..."
-            },
-            index: {
-                card: {
-                    category: "Welcome",
-                    title: `Welcome to the Any Bot Dashboard`,
-                    image: "https://i.imgur.com/SU2Wfz2.png"
-                },
-                information: {
-                    category: "Category",
-                    title: "Information",
-                    description: `This bot is a multi-purpose bot, music, moderation, fun, and more.`,
-                },
-                feeds: {
-                    category: "Category",
-                    title: "Feeds",
-                    description: `New updates will be posted here.`,
-                },
-            },
-            commands: [{
-                    category: "Starting Up",
-                    subTitle: "All helpful commands",
-                    aliasesDisabled: false,
-                    list: [{
-                            commandName: "help",
-                            commandUsage: ">help [command]",
-                            commandDescription: "Obtain a list of commands or information about a specific command.",
-                            commandAlias: ["Commands", "H"]
-                        },
-                        {
-                            commandName: "aliases",
-                            commandUsage: ">aliases  &#60;command type&#62;",
-                            commandDescription: "Displays a list of all current aliases for the given command type. If no command type is given, the amount of aliases for every type will be displayed.",
-                            commandAlias: ['Alias', 'Ali', 'A'],
-                        },
-                        {
-                            commandName: "avatar",
-                            commandUsage: ">avatar [mention/user id]",
-                            commandDescription: "Get the general avatar and (If the user has one) the guilded avatar of a user or yourself.",
-                            commandAlias: ["Profilepic", "Pic", "Ava"]
-                        },
-
-                    ],
-                },
-                {
-                    category: "Starting Up",
-                    subTitle: "All helpful commands",
-                    aliasesDisabled: false,
-                    list: [{
-                            commandName: "help",
-                            commandUsage: ">help [command]",
-                            commandDescription: "Obtain a list of commands or information about a specific command.",
-                            commandAlias: "Commands, H"
-                        },
-                        {
-                            commandName: "warn",
-                            commandUsage: ">warn [user] <reason>",
-                            commandDescription: "Warn a user."
-                        },
-                        {
-                            commandName: "Test command",
-                            commandUsage: "prefix.test <arg> [op]",
-                            commandDescription: "Lorem ipsum dolor sth",
-                            commandAlias: "Alias",
-                        },
-                    ],
-                },
-            ],
         }),
         settings: [{
             categoryId: 'setup',
             categoryName: "Setup",
             categoryDescription: "Setup your bot with default settings!",
             categoryOptionsList: [{
-                optionId: 'prefix',
-                optionName: "Prefix",
-                optionDescription: "Change bot's prefix.",
-                optionType: DBD.formTypes.input(">", 1, 3, false, true),
-                getActualSet: async ({
-                    guild
-                }) => {
-                    return ">"
+                    optionId: 'prefix',
+                    optionName: "Prefix",
+                    optionDescription: "Change bot's prefix.",
+                    optionType: DBD.formTypes.input(">", 1, 3, false, true),
+                    getActualSet: async ({
+                        guild
+                    }) => {
+                        return ">"
+                    },
+                    setNew: async ({
+                        guild,
+                        newData
+                    }) => {
+                        return;
+                    }
                 },
-                setNew: async ({
-                    guild,
-                    newData
-                }) => {
-                    return;
-                }
-            }, ]
+                {
+                    optionId: 'botname',
+                    optionName: "Bot Name",
+                    optionDescription: "Change bot's name",
+                    optionType: DBD.formTypes.input("Any Bot", 1, 32, false, false),
+                    getActualSet: async ({
+                        guild
+                    }) => {
+                        //Get the username in this guild 
+                        const guild_but_client = client.guilds.cache.get(guild.id)
+                        const bot = guild_but_client.members.cache.get(client.user.id)
+                        return bot.nickname
+                    },
+                    setNew: async ({
+                        guild,
+                        newData
+                    }) => {
+                        const guild_but_client = client.guilds.cache.get(guild.id)
+                        const bot = guild_but_client.members.cache.get(client.user.id)
+                        //Set the username in this guild
+                        bot.setNickname(newData)
+                        return newData
+                    }
+                },
+            ]
         }, ]
     });
     Dashboard.init();
