@@ -36,6 +36,14 @@ const DarkDashboard = require('dbd-dark-dashboard');
             scopes: ["bot", "applications.commands"],
             permissions: '8'
         },
+        supportServer: {
+            slash: '/support-server',
+            inviteUrl: process.env.SUPPORT_SERVER_LINK
+        },
+        guildAfterAuthorization: {
+            use: true,
+            guildId: "733857225873031238"
+        },
         theme: DarkDashboard({
             information: {
                 createdBy: "MDCDEV",
@@ -45,8 +53,8 @@ const DarkDashboard = require('dbd-dark-dashboard');
                 dashboardUrl: process.env.DASHBOARD_URL,
                 supporteMail: process.env.SUPPORT_EMAIL,
                 supportServer: process.env.SUPPORT_SERVER_LINK,
-                imageFavicon: "https://www.imidnight.ml/assets/img/logo-circular.png",
-                iconURL: "https://www.imidnight.ml/assets/img/logo-circular.png",
+                imageFavicon: "https://cdn.discordapp.com/avatars/733728002910715977/a2678e67886d2187c4989ebc8f6c7b5e.webp?size=1024",
+                iconURL: "https://cdn.discordapp.com/avatars/733728002910715977/a2678e67886d2187c4989ebc8f6c7b5e.webp?size=1024",
                 pageBackGround: "linear-gradient(#2CA8FF, #155b8d)",
                 loggedIn: "Successfully signed in.",
                 mainColor: "#CEDBDF",
@@ -116,7 +124,6 @@ const DarkDashboard = require('dbd-dark-dashboard');
             }],
             privacyPolicy: {
                 pp: `<div class="container white-text">
-                <h1 id="terms-of-service-and-privacy-policy">Terms Of Service and Privacy Policy</h1>
                 <h2 id="any-bot"><strong>Any Bot.</strong></h2>
                 <p>Last update: <strong>6/3/2022</strong></p>
                 <p><strong>Contact email: <a href="mailto:support@any-bot.tech">support@any-bot.tech</a></strong></p>
@@ -202,6 +209,23 @@ const DarkDashboard = require('dbd-dark-dashboard');
                 </div>
         
               </div>`
+            },
+            guilds: {
+                cardTitle: "Guilds",
+                cardDescription: "Select a guild for configurate the bot:",
+                type: "blurlist"
+            },
+            guildInfo: {
+                cardTitle: "Server Information",
+                cardDescription: "An overview about the server",
+            },
+            guildSettings: {
+                cardTitle: "Settings",
+                cardDescription: "Here you can manage all the settings for the guild:"
+            },
+            popupMsg: {
+                savedSettings: "Saved settings", 
+                noPerms: "Error",
             },
         }),
         settings: [{
