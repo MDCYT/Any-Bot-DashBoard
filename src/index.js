@@ -1,5 +1,8 @@
 if (process.env.ENV !== 'production') require('dotenv').config();
 
+const session = require("express-session");
+var FileStore = require('session-file-store')(session)
+
 const mongoose = require("mongoose");
 const {
     join
@@ -40,6 +43,7 @@ global.__basedir = __dirname;
     const Dashboard = new DBD.Dashboard({
         acceptPrivacyPolicy: true,
         port: process.env.PORT,
+        sessionStore: new FileStore(),
         client: require(join(__basedir, "config/client.js")),
         redirectUri: process.env.DASHBOARD_DOMAIN + '/discord/callback',
         domain: process.env.DASHBOARD_DOMAIN,
