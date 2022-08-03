@@ -1,6 +1,10 @@
 if (process.env.ENV !== 'production') require('dotenv').config();
 
 const {
+    settings
+} = require('./utils/mongodb');
+
+const {
     Client,
     Intents
 } = require('discord.js');
@@ -212,13 +216,13 @@ const DarkDashboard = require('dbd-dark-dashboard');
                     getActualSet: async ({
                         guild
                     }) => {
-                        return ">"
+                        return await settings.getPrefixByGuildID(guild.id)
                     },
                     setNew: async ({
                         guild,
                         newData
                     }) => {
-                        return;
+                        return await settings.setPrefixByGuildID(guild.id, newData)
                     }
                 },
                 {

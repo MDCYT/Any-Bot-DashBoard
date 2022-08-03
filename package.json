@@ -17,7 +17,8 @@
   "dependencies": {
     "dbd-dark-dashboard": "^1.6.591",
     "discord-dashboard": "^2.3.40",
-    "discord.js": "^13.9.2"
+    "discord.js": "^13.9.2",
+    "mongoose": "^6.5.0"
   },
   "devDependencies": {
     "dotenv": "^16.0.1",
