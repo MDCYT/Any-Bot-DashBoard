@@ -1,7 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 
-
 const models = fs.readdirSync(path.join(__dirname, "databases"));
 models.forEach((model) => {
   const modelName = model.split(".")[0];

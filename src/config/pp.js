@@ -1,5 +1,5 @@
 module.exports = {
-    pp: `<div class="container white-text">
+  pp: `<div class="container white-text">
     <h2 id="any-bot"><strong>Any Bot.</strong></h2>
     <p>Last update: <strong>6/3/2022</strong></p>
     <p><strong>Contact email: <a href="mailto:support@any-bot.tech">support@any-bot.tech</a></strong></p>

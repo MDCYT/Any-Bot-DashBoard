@@ -17,10 +17,10 @@ module.exports = {
         username: "Any Bot",
         avatarURL: process.env.ICON,
         defaultJson: {
-              content: "Welcome ?member to ?guild !",
-              embed: {}
-          }
-      }),
+            content: "Welcome ?member to ?guild !",
+            embed: {}
+        }
+    }),
     getActualSet: async ({
         guild
     }) => {
