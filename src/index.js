@@ -44,6 +44,14 @@ const DarkDashboard = require('dbd-dark-dashboard');
             use: true,
             guildId: "733857225873031238"
         },
+        customPages: [
+            DBD.customPagesTypes.sendJson('/me.json', ({user}) => {
+                return {
+                    message: user.id ? "User logged" : "User not logged in.",
+                    user: user
+                };
+            })
+        ],
         theme: DarkDashboard({
             information: {
                 createdBy: "MDCDEV",
