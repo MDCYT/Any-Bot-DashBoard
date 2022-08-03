@@ -1,7 +1,13 @@
-if (process.env.ENV !== 'production') require('dotenv').config();
 
 const session = require("express-session");
-var FileStore = require('session-file-store')(session)
+let Store;
+
+if (process.env.ENV !== 'production') {
+    require('dotenv').config();
+    Store = require('memorystore')(session);
+} else {
+    Store = require('session-file-store')(session)
+}
 
 const mongoose = require("mongoose");
 const {
@@ -43,7 +49,7 @@ global.__basedir = __dirname;
     const Dashboard = new DBD.Dashboard({
         acceptPrivacyPolicy: true,
         port: process.env.PORT,
-        sessionStore: new FileStore(),
+        sessionStore: new Store(),
         client: require(join(__basedir, "config/client.js")),
         redirectUri: process.env.DASHBOARD_DOMAIN + '/discord/callback',
         domain: process.env.DASHBOARD_DOMAIN,
@@ -67,7 +73,8 @@ global.__basedir = __dirname;
             popupMsg: require(join(__basedir, "config/popupMsg.js")),
         }),
         settings: [
-            require(join(__basedir, "settings/setup/index.js"))
+            require(join(__basedir, "settings/setup/index.js")),
+            require(join(__basedir, "settings/welcome-and-farewell/index.js"))
         ],
     });
     Dashboard.init();

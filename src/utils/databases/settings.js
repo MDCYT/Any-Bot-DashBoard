@@ -90,25 +90,19 @@ const Guild = mongoose.model('Settings', new mongoose.Schema({
         type: String,
     },
     welcomeMessage: {
-        type: Array,
-        default: [{
-            type: "message",
-            data: {
-                text: "Welcome ?member to ?guild !"
-            }
-        }]
+        type: Object,
+        default: {
+            content: 'Welcome ?member to ?guild !',
+          }
     },
     farewellChannelID: {
         type: String,
     },
     farewellMessage: {
-        type: Array,
-        default: [{
-            type: "message",
-            data: {
-                text: "Goodbye ?member !"
-            }
-        }]
+        type: Object,
+        default: {
+            content: 'Goodbye ?member !',
+          }
     },
     pointTracking: {
         type: Number,
@@ -189,5 +183,49 @@ module.exports = {
         let newPrefix = prefix || ">"
         const guild = await Guild.findOneAndUpdate({guildID: guildid}, {prefix: newPrefix}, {new: true})
         return guild
-    }
+    },
+
+    async getWelcomeChannelID(guildid) {
+        const guild = await Guild.findOne({guildID: guildid}, {welcomeChannelID: 1})
+        return guild?.welcomeChannelID || null
+    },
+
+    async setWelcomeChannelID(guildid, channelid) {
+        const guild = await Guild.findOneAndUpdate({guildID: guildid}, {welcomeChannelID: channelid}, {new: true})
+        return guild
+    },
+
+    async selectWelcomeMessage(guildid) {
+        const guild = await Guild.findOne({guildID: guildid}, {welcomeMessage: 1})
+        return guild?.welcomeMessage || {
+            content: 'Welcome ?member to ?guild !',
+          }
+    },
+
+    async setWelcomeMessage(guildid, message) {
+        const guild = await Guild.findOneAndUpdate({guildID: guildid}, {welcomeMessage: message}, {new: true})
+        return guild
+    },
+
+    async getFarewellChannel(guildid){
+        const guild = await Guild.findOne({guildID: guildid}, {farewellChannelID: 1})
+        return guild?.farewellChannelID || null
+    },
+
+    async setFarewellChannelID(guildid, channelid) {
+        const guild = await Guild.findOneAndUpdate({guildID: guildid}, {farewellChannelID: channelid}, {new: true})
+        return guild
+    },
+
+    async selectFarewellMessage(guildid) {
+        const guild = await Guild.findOne({guildID: guildid}, {farewellMessage: 1})
+        return guild?.farewellMessage || {
+            content: 'Goodbye ?member !',
+          }
+    },
+
+    async setFarewellMessage(guildid, message) {
+        const guild = await Guild.findOneAndUpdate({guildID: guildid}, {farewellMessage: message}, {new: true})
+        return guild
+    },
 }
