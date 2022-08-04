@@ -62,6 +62,7 @@ global.__basedir = __dirname;
         theme: DarkDashboard({
             information: require(join(__basedir, "config/information.js")),
             index: require(join(__basedir, "config/index.js")),
+            custom_html: require(join(__basedir, "config/custom_html.js")),
             commands: [
                 require(join(__basedir, "commands/startingup.js"))
             ],
